@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nana
+  labels:
+    app: nana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nana
+  template:
+    metadata:
+      name: nana
+      labels:
+        app: nana
+    spec:    
+      containers:
+        - name: nana
+          image: msa200/nana15:1.0
+          ports: 
+            - containerPort: 3000
+          env:
+            - name: dburl
+              value: mongodb://mongo:27017
